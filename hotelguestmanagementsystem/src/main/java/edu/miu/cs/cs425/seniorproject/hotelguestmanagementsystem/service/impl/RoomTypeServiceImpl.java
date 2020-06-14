@@ -1,0 +1,87 @@
+package edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.service.impl;
+
+import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.model.Room;
+import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.model.RoomType;
+import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.model.Status;
+import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.repository.RoomTypeRepository;
+import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.service.RoomTypeService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class RoomTypeServiceImpl implements RoomTypeService {
+    @Autowired
+    private RoomTypeRepository roomTypeRepository;
+
+    @Override
+    public RoomType addRoomType(RoomType roomType) {
+        return roomTypeRepository.save(roomType);
+    }
+
+    @Override
+    public RoomType getRoomType(Long roomTypeId) {
+        Optional<RoomType> roomType = roomTypeRepository.findById(roomTypeId);
+        return roomType.orElse(null);
+    }
+
+    @Override
+    public List<RoomType> getAllRoomTypes() {
+        return roomTypeRepository.findAll();
+    }
+
+    @Override
+    public RoomType updateRoomType(RoomType roomType) {
+        RoomType oldRoomType = getRoomType(roomType.getRoomTypeId());
+        oldRoomType.setPrice(roomType.getPrice());
+        oldRoomType.setDescription(roomType.getDescription());
+        oldRoomType.setImagePath(roomType.getImagePath());
+        oldRoomType.setRoomList(roomType.getRoomList());
+        return roomTypeRepository.save(oldRoomType);
+    }
+
+    @Override
+    public void deleteRoomType(Long roomTypeId) {
+
+        roomTypeRepository.deleteById(roomTypeId);
+
+    }
+
+    @Override
+    public void addRoom(Room room, String roomType) {
+        RoomType rType = getRoomType(roomType);
+        rType.addRoom(room);
+    }
+
+    @Override
+    public RoomType getRoomType(String roomType) {
+        List<RoomType> roomTypes = getAllRoomTypes();
+        for (RoomType rType : roomTypes) {
+            if (rType.getType().equalsIgnoreCase(roomType)) {
+                return rType;
+            }
+        }
+            return null;
+    }
+
+    @Override
+    public List<RoomType> getAvailableRoomTypes() {
+        List<RoomType> roomTypes = getAllRoomTypes();
+        List<RoomType> availableRoomTypes = new ArrayList<>();
+        for(RoomType roomType : roomTypes) {
+            int counter = 0;
+            for(Room room : roomType.getRoomList()) {
+                if(room.getRoomStatus().equals(Status.AVAILABLE)){
+                    ++counter;
+                    availableRoomTypes.add(roomType);
+                }
+            }
+            roomType.setNumberOfRoomsAvailable(counter);
+        }
+        return availableRoomTypes;
+    }
+
+}
