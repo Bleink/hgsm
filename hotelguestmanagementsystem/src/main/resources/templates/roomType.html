@@ -28,7 +28,7 @@
         <div class="hotel_reserve_box card">
             <h3>Rooms Registration Form</h3>
             <br>
-            <form th:action="@{/admin/addRoomType}" th:object="${roomType}" method="post">
+            <form th:action="@{/roomType}" th:object="${roomType}" method="post">
                 <div class="form-group" th:classappend="${#fields.hasErrors('type')}? 'has-error':''">
                     <label for="type" class="control-label">Room/Suite Type</label>
                    <input id="type" class="form-control" th:field="*{type}" />
