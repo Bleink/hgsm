@@ -7,6 +7,7 @@ import java.io.File;
 
 @Controller
 public class HomeController {
+
     @GetMapping(value = {"/home"})
     public String displayHome(Model model) {
         String[] curouselList = curouselPictureList();
@@ -19,13 +20,13 @@ public class HomeController {
     }
 
     public String[] curouselPictureList() {
-        File file = new File("C:/Users/yetad/OneDrive/Documents/GitHub/hgsm/hotelguestmanagementsystem/src/main/resources/static/img/curousel");
+        File file = new File("C:\\Users\\asus\\Documents\\GitHub\\hgsm\\hotelguestmanagementsystem\\src\\main\\resources\\static\\img\\curousel");
         String[] fileList = file.list();
         return fileList;
     }
 
     public String[] indexBottomPictureList() {
-        File file = new File("C:/Users/yetad/OneDrive/Documents/GitHub/hgsm/hotelguestmanagementsystem/src/main/resources/static/img/indexBottomPictures");
+        File file = new File("C:\\Users\\asus\\Documents\\GitHub\\hgsm\\hotelguestmanagementsystem\\src\\main\\resources\\static\\img\\indexBottomPictures");
         String[] fileList = file.list();
         return fileList;
     }
