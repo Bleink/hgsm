@@ -30,17 +30,12 @@ public class User {
     @Column(name = "username",unique= true ,nullable = false )
     @NotBlank(message="user name is required")
     private String userName;
-
-
-
     @Column(name="password" ,nullable=false)
     @Size(min = 8)
     @NotBlank(message="password is required")
     private String password;
-
-  //  @NotBlank(message="cell phone number is required")
+    @NotBlank(message="cell phone number is required")
     @Column(nullable = true)
-
     private  String cellPhoneNumber;
     @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "address_Id")

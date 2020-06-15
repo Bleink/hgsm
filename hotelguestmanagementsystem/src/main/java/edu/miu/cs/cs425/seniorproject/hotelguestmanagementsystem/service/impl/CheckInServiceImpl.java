@@ -5,6 +5,6 @@ import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.service.CheckIn
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class CheckInServiceImpl implements CheckInService {
-    @Autowired
-    CheckInRepository checkInRepository;
+//    @Autowired
+//    CheckInRepository checkInRepository;
 }

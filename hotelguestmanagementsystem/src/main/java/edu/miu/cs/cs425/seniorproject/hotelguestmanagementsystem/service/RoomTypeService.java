@@ -16,11 +16,4 @@ public interface RoomTypeService {
     public RoomType updateRoomType(RoomType roomType);
 
     public void deleteRoomType(Long roomTypeId);
-
-    public void addRoom(Room room , String roomType);
-
-    public RoomType getRoomType (String roomType);
-
-    public List<RoomType> getAvailableRoomTypes();
-
 }

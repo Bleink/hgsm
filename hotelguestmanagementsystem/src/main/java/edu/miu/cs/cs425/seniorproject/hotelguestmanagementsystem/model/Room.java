@@ -22,5 +22,8 @@ public class Room {
     @Column(nullable = false)
     private Integer roomNumber;
     @Enumerated
-    private Status roomStatus = Status.AVAILABLE;
+    private Status roomStatus;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "roomtype_id", nullable = false)
+    private RoomType roomType;
 }

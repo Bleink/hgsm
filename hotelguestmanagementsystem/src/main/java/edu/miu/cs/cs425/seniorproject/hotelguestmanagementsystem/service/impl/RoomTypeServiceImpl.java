@@ -39,7 +39,6 @@ public class RoomTypeServiceImpl implements RoomTypeService {
         oldRoomType.setPrice(roomType.getPrice());
         oldRoomType.setDescription(roomType.getDescription());
         oldRoomType.setImagePath(roomType.getImagePath());
-        oldRoomType.setRoomList(roomType.getRoomList());
         return roomTypeRepository.save(oldRoomType);
     }
 
@@ -49,39 +48,4 @@ public class RoomTypeServiceImpl implements RoomTypeService {
         roomTypeRepository.deleteById(roomTypeId);
 
     }
-
-    @Override
-    public void addRoom(Room room, String roomType) {
-        RoomType rType = getRoomType(roomType);
-        rType.addRoom(room);
-    }
-
-    @Override
-    public RoomType getRoomType(String roomType) {
-        List<RoomType> roomTypes = getAllRoomTypes();
-        for (RoomType rType : roomTypes) {
-            if (rType.getType().equalsIgnoreCase(roomType)) {
-                return rType;
-            }
-        }
-            return null;
-    }
-
-    @Override
-    public List<RoomType> getAvailableRoomTypes() {
-        List<RoomType> roomTypes = getAllRoomTypes();
-        List<RoomType> availableRoomTypes = new ArrayList<>();
-        for(RoomType roomType : roomTypes) {
-            int counter = 0;
-            for(Room room : roomType.getRoomList()) {
-                if(room.getRoomStatus().equals(Status.AVAILABLE)){
-                    ++counter;
-                    availableRoomTypes.add(roomType);
-                }
-            }
-            roomType.setNumberOfRoomsAvailable(counter);
-        }
-        return availableRoomTypes;
-    }
-
 }
