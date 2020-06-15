@@ -35,4 +35,15 @@ public class RoomType {
     public void addRoom(Room room) {
         roomList.add(room);
     }
+
+    public RoomType(Long roomTypeId, String type, Double price, String description, String imagePath) {
+        this.roomTypeId = roomTypeId;
+        this.type = type;
+        this.price = price;
+        this.description = description;
+        this.imagePath = imagePath;
+//		this.roomList = roomList;
+    }
 }
+
+ 
