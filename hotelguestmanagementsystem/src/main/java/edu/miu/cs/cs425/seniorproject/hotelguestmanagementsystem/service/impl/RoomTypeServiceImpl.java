@@ -48,4 +48,5 @@ public class RoomTypeServiceImpl implements RoomTypeService {
         roomTypeRepository.deleteById(roomTypeId);
 
     }
+
 }

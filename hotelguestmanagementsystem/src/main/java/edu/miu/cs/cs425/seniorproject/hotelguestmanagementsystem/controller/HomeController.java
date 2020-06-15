@@ -20,13 +20,13 @@ public class HomeController {
     }
 
     public String[] curouselPictureList() {
-        File file = new File("C:\\Users\\asus\\Documents\\GitHub\\hgsm\\hotelguestmanagementsystem\\src\\main\\resources\\static\\img\\curousel");
+        File file = new File("C:\\Workspace\\Sami Project\\hgsm\\hotelguestmanagementsystem\\src\\main\\resources\\static\\img\\curousel");
         String[] fileList = file.list();
         return fileList;
     }
 
     public String[] indexBottomPictureList() {
-        File file = new File("C:\\Users\\asus\\Documents\\GitHub\\hgsm\\hotelguestmanagementsystem\\src\\main\\resources\\static\\img\\indexBottomPictures");
+        File file = new File("C:\\Workspace\\Sami Project\\hgsm\\hotelguestmanagementsystem\\src\\main\\resources\\static\\img\\indexBottomPictures");
         String[] fileList = file.list();
         return fileList;
     }

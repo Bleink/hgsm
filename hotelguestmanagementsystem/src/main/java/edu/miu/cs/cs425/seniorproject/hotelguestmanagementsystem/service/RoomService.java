@@ -15,5 +15,6 @@ public interface RoomService {
 
     public void deleteRoom(Long room);
 
+    public List<Room> searchRoom(String roomType);
 
 }

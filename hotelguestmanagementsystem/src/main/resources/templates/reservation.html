@@ -28,10 +28,10 @@
 			<div class="hotel_reserve_box card">
 				<h3>Hotel Reservation Form</h3>
 				<br>
-				<form>
+				<form th:action="@{/addStudent}" th:object="${student}">
 					<div class="form-group">
 						<label>Room/Suite Type</label> <select class="form-control"
-							id="room_type" onchange="finalCost()">
+							id="room_type" onchange="finalCost()" th:field="*{type}">
 							<option value="0" selected>Select Room/Suite</option>
 							<option value="1">Standard</option>
 							<option value="2">Deluxe</option>

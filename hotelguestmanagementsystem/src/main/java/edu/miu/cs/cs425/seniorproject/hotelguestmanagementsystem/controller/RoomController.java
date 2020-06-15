@@ -1,12 +1,19 @@
 package edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.controller;
 
 import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.model.RoomType;
+import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.service.RoomService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class RoomController {
+
+    @Autowired
+    private RoomService roomService;
 
     @GetMapping("/room")
     public String getRooms(Model model) {
@@ -20,6 +27,17 @@ public class RoomController {
 
         model.addAttribute("typesOfRooms",roomArr);
         return "accommodation";
+    }
+
+
+    @GetMapping("/search-rooms")
+    public ModelAndView searchRooms(@RequestParam String roomType){
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("rooms", roomService.searchRoom(roomType));
+        modelAndView.addObject("roomType", roomType);
+        modelAndView.setViewName("student/list-student");
+        return modelAndView;
     }
 }
 
