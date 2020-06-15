@@ -42,7 +42,7 @@ public class ReservationServiceImpl implements ReservationService {
         Reservation oldReservation = getReservation(reservation.getReservationId());
         oldReservation.setNumberOfNights(reservation.getNumberOfNights());
         oldReservation.setReservationDate(reservation.getReservationDate());
-        oldReservation.setRoomTypeList(reservation.getRoomTypeList());
+        oldReservation.setRoomType(reservation.getRoomType());
         return reservationRepository.save(oldReservation);
     }
 
