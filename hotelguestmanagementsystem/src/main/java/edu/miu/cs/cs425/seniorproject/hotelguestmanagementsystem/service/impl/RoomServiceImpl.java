@@ -15,18 +15,9 @@ public class RoomServiceImpl implements RoomService {
     @Autowired
     private RoomRepository roomRepository;
 
-    @Autowired
-    private RoomTypeService roomTypeService;
-
-
     @Override
     public Room createRoom(Room room) {
         return roomRepository.save(room);
-    }
-
-    @Override
-    public void addRoomToRoomType(Room room, String type) {
-        roomTypeService.addRoom(room, type);
     }
 
     @Override
@@ -45,6 +36,7 @@ public class RoomServiceImpl implements RoomService {
         Room oldRoom = getRoom(room.getRoomId());
         oldRoom.setRoomNumber(room.getRoomNumber());
         oldRoom.setRoomStatus(room.getRoomStatus());
+        oldRoom.setRoomType(room.getRoomType());
         return roomRepository.save(oldRoom);
     }
 

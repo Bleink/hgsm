@@ -17,17 +17,10 @@ public class BillServiceImpl  implements BillService {
     private BillRepository billRepository;
 
     @Override
-    public Double calculateBill(LocalDate checkoutDate) {
-
-        return null;
-    }
-
-    @Override
     public Bill initiateBill(Bill bill) {
-        Bill newBill = billRepository.save(bill);
-  return null;
-//        newBill.calculateBill();
+        return billRepository.save(bill);
     }
+
     @Override
     public Bill getBill(Long billId) {
         Optional<Bill> bill = billRepository.findById(billId);

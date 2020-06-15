@@ -8,8 +8,6 @@ public interface ReservationService {
 
     public Reservation getReservation(Long reservationId);
 
-    public Reservation getReservation(Integer roomNumber);
-
     public Page<Reservation> getAllReservations();
 
     public Reservation updateReservation(Reservation reservation);

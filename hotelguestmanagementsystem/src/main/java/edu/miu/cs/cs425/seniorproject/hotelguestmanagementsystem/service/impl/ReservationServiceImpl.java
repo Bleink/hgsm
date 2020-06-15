@@ -23,16 +23,6 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Override
     public Reservation makeReservation(Reservation reservation) {
-        List<RoomType> roomTypes = reservation.getRoomTypeList();
-        for (RoomType roomType : roomTypes) {
-            for (Room room : roomType.getRoomList()) {
-                if (room.getRoomStatus().equals(Status.AVAILABLE)) {
-                    Integer roomNumber = room.getRoomNumber();
-                    reservation.setRoomNumber(roomNumber);
-                    room.setRoomStatus(Status.RESERVED);
-                }
-            }
-        }
         return reservationRepository.save(reservation);
     }
 
@@ -40,17 +30,6 @@ public class ReservationServiceImpl implements ReservationService {
     public Reservation getReservation(Long reservationId) {
         Optional<Reservation> reservation = reservationRepository.findById(reservationId);
         return reservation.orElse(null);
-    }
-
-    @Override
-    public Reservation getReservation(Integer roomNumber) {
-        List<Reservation> reservationList = reservationRepository.findAll();
-        for (Reservation reservation : reservationList) {
-            if(reservation.getRoomNumber().equals(roomNumber)) {
-                return  reservation;
-            }
-        }
-        return null;
     }
 
     @Override
@@ -63,7 +42,7 @@ public class ReservationServiceImpl implements ReservationService {
         Reservation oldReservation = getReservation(reservation.getReservationId());
         oldReservation.setNumberOfNights(reservation.getNumberOfNights());
         oldReservation.setReservationDate(reservation.getReservationDate());
-        oldReservation.setRoomTypeList(reservation.getRoomTypeList());
+        oldReservation.setRoomType(reservation.getRoomType());
         return reservationRepository.save(oldReservation);
     }
 

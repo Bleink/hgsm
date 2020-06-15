@@ -27,23 +27,23 @@ public class RoomType {
     private String description;
     @Column(nullable = true)
     private String imagePath;
-    private Integer numberOfRoomsAvailable;
-    @OneToMany(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "room_id")
-    private List<Room> roomList;
+//    private Integer numberOfRoomsAvailable;
+//    @OneToMany(cascade = CascadeType.PERSIST)
+//    @JoinColumn(name = "roomtype_id")
+//    private List<Room> roomList;
 
-    public void addRoom(Room room) {
-        roomList.add(room);
-    }
+//    public void addRoom(Room room) {
+//        roomList.add(room);
+//    }
 
-    public RoomType(Long roomTypeId, String type, Double price, String description, String imagePath) {
-        this.roomTypeId = roomTypeId;
-        this.type = type;
-        this.price = price;
-        this.description = description;
-        this.imagePath = imagePath;
-//		this.roomList = roomList;
-    }
+//    public RoomType(Long roomTypeId, String type, Double price, String description, String imagePath) {
+//        this.roomTypeId = roomTypeId;
+//        this.type = type;
+//        this.price = price;
+//        this.description = description;
+//        this.imagePath = imagePath;
+////		this.roomList = roomList;
+//    }
 }
 
  

@@ -6,7 +6,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface BillService {
-    public Double calculateBill(LocalDate checkoutDate);
 
     public Bill initiateBill(Bill bill);
 
