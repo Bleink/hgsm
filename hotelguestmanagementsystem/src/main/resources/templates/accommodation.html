@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head :: head">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+	<!-- this is replaced with thymeleaf include -->
+	<header class="header_area" style="background-color: white;"
+		th:replace="fragments/header :: header"></header>
+
+	<div class="container" style="background-color: white; padding: 0;">
+
+		<section class="breadcrumb_area">
+			<div class="container">
+
+				<div class="back_nav">
+					<div class="col-sm-5">
+						<h2>Accommodation</h2>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="roomArea">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="shead">
+							<h1>Our Favoriate Rooms</h1>
+						</div>
+					</div>
+				</div>
+				
+				<!-- display all room types -->
+				<div class="row">
+					<div class="all_rooms">
+						<div id="roomType" class="col-md-4 col-sm-6" th:each="roomList: ${typesOfRooms}">
+							<div class="single_room_item">
+								<div class="room_photo">
+									<img th:src="${roomList.imagePath}" alt="" width="350" height="250">
+									<div class="room-title">
+										<h3 th:text="${roomList.type}">TYPE PLACE HOLDER</h3>
+									</div>
+								</div> 
+								<div class="room_title">
+									<h2 th:text="'Starting From ' + ${roomList.price} + '/Night'">PRICE PLACE HOLDER</h2>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-12">
+						<div class="view_all">
+							<a class="rm_btn btn-primary" role="button" href="/reservation">Go To Reservation</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+	</div>
+
+	<!-- this is replaced with thymeleaf include -->
+	<footer class="footer_area" th:replace="fragments/footer :: footer"></footer>
+
+	​​
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<script src="https://maps.googleapis.com/maps/api/js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</body>
+</html>

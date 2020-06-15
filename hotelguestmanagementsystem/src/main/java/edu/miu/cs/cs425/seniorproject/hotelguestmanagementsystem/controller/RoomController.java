@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class RoomController {
 
-    @GetMapping("/Room")
+    @GetMapping("/room")
     public String getRooms(){
-        return "Other/accommodation";
+        return "accommodation";
     }
 }
 

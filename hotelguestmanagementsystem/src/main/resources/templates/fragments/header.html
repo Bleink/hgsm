@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>header</title>
+</head>
+<body>
+	<header class="header_area" style="background-color: white;" th:fragment="header">
+		<div class="header_bottom">
+			<div class="container">
+				<div class="main_header">
+					<div class="row">
+						<div class="col-md-3 col-sm-2">
+							<div class="logo">
+								<a href="index.html"><img src="img/favicon.png"
+									alt="Site Logo"></a>
+							</div>
+						</div>
+						<div class="col-md-9 col-sm-10 nav_area">
+							<nav class="main_menu">
+								<div class="navbar-collapse collapse">
+									<ul class="nav navbar-nav navbar-right">
+										<li><a href="/home">Home</a></li>
+										<li><a href="/room">Accommodation</a></li>
+										<li><a href="/contactUs">ContactUs</a></li>
+										<li><a href="/reservation">Reservation</a></li>
+									</ul>
+								</div>
+							</nav>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+</body>
+</html>

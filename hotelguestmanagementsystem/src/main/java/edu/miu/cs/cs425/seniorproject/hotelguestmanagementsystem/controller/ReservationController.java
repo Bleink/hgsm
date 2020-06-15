@@ -10,9 +10,9 @@ public class ReservationController {
     @Autowired
     private ReservationService  reservationService;
 
-    @GetMapping("/Reservation")
+    @GetMapping("/reservation")
     public String makeReservation(){
-        return "Reservation/reservation";
+        return "reservation";
     }
 
 
