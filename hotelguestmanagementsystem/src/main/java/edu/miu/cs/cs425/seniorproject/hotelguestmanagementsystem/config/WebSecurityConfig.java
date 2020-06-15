@@ -24,6 +24,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsService userService;
 
+    @Autowired
+    private LoggingAccessDeniedHandler accessDeniedHandler;
 
 
     @Bean
@@ -68,11 +70,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
                 .logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/public/logout"))
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/login?logout")
                 .permitAll()
                 .and()
-                .exceptionHandling();
+                .exceptionHandling().accessDeniedHandler(accessDeniedHandler);
     }
     @Bean
     public AuthenticationSuccessHandler myAuthenticationSuccessHandler(){

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,6 +26,14 @@
 										<li><a href="/room">Accommodation</a></li>
 										<li><a href="/contactUs">ContactUs</a></li>
 										<li><a href="/reservation">Reservation</a></li>
+										<li> <a sec:authorize="isAuthenticated()" th:href="@{/logout}">Sign Out</a></li>
+
+
+                   <!-- | Logged user: <span sec:authentication="name"></span> |
+                    Roles: <span sec:authentication="principal.authorities"></span> |-->
+
+
+
 									</ul>
 								</div>
 							</nav>
