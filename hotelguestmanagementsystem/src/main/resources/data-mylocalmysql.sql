@@ -14,7 +14,7 @@ INSERT INTO roles (role_id, name)
 VALUES ('3', 'RECEPTION');
 
 INSERT INTO users (user_id, email, enabled, first_name, last_name, password, username, address_id)
-VALUES ('1', 'admin@gmail.com', '0', 'Blein', 'Yirdaw',
+VALUES ('1', 'admin@gmail.com', 0, 'Blein', 'Yirdaw',
 '$2a$10$wPowN5LTwMCmM8Q5amycVOSU/ecpHjiznEfgaWgaTKDHiCjUJs6e6','admin@gmail.com','1');
 
 INSERT INTO roomtypes  (roomtype_id, description, image_path, price , type)
