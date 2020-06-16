@@ -11,9 +11,6 @@ import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.service.Reserva
 import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.temporal.ChronoUnit;
@@ -40,7 +37,7 @@ public class ReservationServiceImpl implements ReservationService {
         res.setCheckoutDate(reservation.getCheckOutDate());
         Long nights= ChronoUnit.DAYS.between(reservation.getCheckInDate(),reservation.getCheckOutDate());
         res.setNumberOfNights(nights);
-        Guest guest=guestService.findByEmail(email);
+        Guest guest= guestService.findByEmail(email);
         System.out.println("........no of rooms......"+ guest);
         res.setGuest(guest);
      room.parallelStream().
