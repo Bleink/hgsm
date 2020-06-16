@@ -45,7 +45,7 @@ public class User {
     @NotBlank(message = "* Email is required")
     @Email(message="{errors.invalid_email}")
     private String email;
-    @ManyToMany(fetch = FetchType.EAGER,cascade = {CascadeType.MERGE,CascadeType.PERSIST})
+    @ManyToMany(fetch = FetchType.EAGER,cascade = {CascadeType.MERGE})
     @JoinTable(
             name = "users_roles",
             joinColumns = {@JoinColumn(name = "USER_ID", referencedColumnName = "userId")},

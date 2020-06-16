@@ -3,28 +3,16 @@ package edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.controller;
 import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.dto.ReservationDto;
 import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.model.Room;
 import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.model.RoomType;
-import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.model.Status;
 import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.service.RoomService;
 import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.service.RoomTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletContext;
 import javax.validation.Valid;
 import java.util.List;
-
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-
-import javax.servlet.ServletContext;
-import javax.validation.Valid;
-import java.security.Principal;
 
 
 @Controller
@@ -75,7 +63,7 @@ public class RoomController {
 
     }
 
-    @PostMapping("/room")
+    @PostMapping
     public String addRoom(@ModelAttribute("room") @Valid Room room, Model model){
         roomService.createRoom(room);
 
