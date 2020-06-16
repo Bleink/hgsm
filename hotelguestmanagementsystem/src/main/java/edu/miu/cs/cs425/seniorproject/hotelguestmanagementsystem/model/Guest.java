@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Data
-
 @Entity
 @Table(name = "guests")
 public class Guest extends User {

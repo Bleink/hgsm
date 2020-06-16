@@ -24,9 +24,9 @@ public class GuestServiceImpl implements GuestService {
 
     @Override
     public Guest findByEmail(String email) {
-        Guest guest=guestRepository.findByEmail(email);
+      return guestRepository.findByEmail(email);
 
-        return null;
+
     }
 
     @Override
