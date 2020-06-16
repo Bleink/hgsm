@@ -9,13 +9,10 @@ import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.service.RoomTyp
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-<<<<<<< HEAD
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-=======
 import org.springframework.web.bind.annotation.*;
->>>>>>> 03fac192cbef347373aaf84df5f27bd39f890d5c
 
 import javax.servlet.ServletContext;
 import javax.validation.Valid;
@@ -87,8 +84,6 @@ public class RoomController {
     }
 
     @PostMapping("/room")
-    public String addRoom(@ModelAttribute("room") @Valid Room room){
-    @PostMapping
     public String addRoom(@ModelAttribute("room") @Valid Room room, Model model){
         roomService.createRoom(room);
 
