@@ -4,8 +4,6 @@ import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import java.util.Arrays;
-import java.util.HashSet;
 
 @Data
 
@@ -14,8 +12,8 @@ import java.util.HashSet;
 public class Guest extends User {
 
 
-        public Guest(){
+      /*  public Guest(){
             super(new HashSet<Role>(Arrays.asList(new Role("GUEST"))));
-        }
+        }*/
 
 }
