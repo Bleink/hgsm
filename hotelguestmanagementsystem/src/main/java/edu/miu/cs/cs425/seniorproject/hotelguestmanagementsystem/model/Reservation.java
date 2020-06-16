@@ -25,9 +25,12 @@ public class Reservation {
     private LocalDate reservationDate;
     @Column(nullable=false)
     private Integer numberOfNights;
-    @OneToOne()
-    @JoinColumn(name = "roomtype_id")
-    private RoomType roomType;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "room_id")
+    private Room room;
+    @ManyToOne( optional = false,cascade = CascadeType.ALL)
+    @JoinColumn(name = "guest_id", nullable = false)
+    private Guest guest;
 
 
 }

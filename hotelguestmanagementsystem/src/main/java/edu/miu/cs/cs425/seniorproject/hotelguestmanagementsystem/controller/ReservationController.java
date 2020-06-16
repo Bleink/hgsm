@@ -11,11 +11,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
+
 
 import javax.servlet.ServletContext;
-import java.security.Principal;
+
 import java.util.List;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.security.Principal;
 
 @Controller
 public class ReservationController {
@@ -36,7 +42,24 @@ public class ReservationController {
         modelAndView.addObject("reservationDto", new ReservationDto());
 
         modelAndView.setViewName("reservation");
-        return modelAndView;
+        return modelAndView;}
 
+        @ModelAttribute("reservationDto")
+        public ReservationDto reservationDto(){
+            return new ReservationDto();
+        }
+
+        @PutMapping("/reservation")
+    public ModelAndView makeReservation(@ModelAttribute("reservation") Reservation reservation, Room room, Principal principal) {
+
+            Reservation result=  reservationService.makeReservation(reservation,principal.getName(),room);
+            ModelAndView modelAndView=new ModelAndView();
+            modelAndView.addObject("reservation",result);
+            modelAndView.setViewName("reservation");
+
+     return modelAndView;
     }
+
+
+
 }
