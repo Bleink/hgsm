@@ -2,47 +2,80 @@ package edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.controller;
 
 import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.model.Room;
 import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.model.RoomType;
+import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.model.Status;
 import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.service.RoomService;
+import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.service.RoomTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
+@RequestMapping("/room")
 //@RequestMapping("/admin")
 public class RoomController {
 
     @Autowired
     RoomService roomService;
 
-    @ModelAttribute("room")
-    public Room room() {
-        return new Room();
-    }
+//    @Autowired
+//    RoomTypeService roomTypeService;
 
-    @GetMapping("/room")
+//    @ModelAttribute("room")
+//    public Room room() {
+//        return new Room();
+//    }
+
+    @GetMapping
     public String getRooms(Model model) {
-
-        RoomType[] roomArr = { new RoomType(1l, "Standard", 100.00, "this is kings description", "img/banner.jpg"),
-                new RoomType(1l, "Deluxe", 200.00, "this is kings description", "img/banner.jpg"),
-                new RoomType(1l, "Superior Deluxe", 300.00, "this is kings description", "img/banner.jpg"),
-                new RoomType(1l, "Premier Deluxe", 400.00, "this is kings description", "img/banner.jpg"),
-                new RoomType(1l, "Executive Suite", 500.00, "this is kings description", "img/banner.jpg"),
-                new RoomType(1l, "Junior Suite", 600.00, "this is kings description", "img/banner.jpg") };
-
-        model.addAttribute("typesOfRooms",roomArr);
-        return "accommodation";
+        Room room = new Room();
+        model.addAttribute(room);
+//        model.addAttribute(Status.AVAILABLE);
+        return "room";
     }
 
-    @PostMapping("/room")
-    public String addRoom(@ModelAttribute("room") @Valid Room room){
+//    public String getRooms(Model model) {
+//        List<RoomType> roomTypes = roomTypeService.getAllRoomTypes();
+//        model.addAttribute("typesOfRooms",roomTypes);
+//        return "accommodation";
+//    }
+
+
+
+    @PostMapping
+    public String addRoom(@ModelAttribute("room") @Valid Room room, Model model){
         roomService.createRoom(room);
-        return null;
+
+        List<Room> rooms = roomService.getAllRooms();
+        model.addAttribute("registeredRooms",rooms);
+
+        return "roomlist";
+    }
+
+    @RequestMapping("/delete/{id}")
+    public String deleteRoom(@PathVariable(name = "id") Long id, @ModelAttribute("room") @Valid Room room, Model model){
+        roomService.deleteRoom(id);
+        List<Room> rooms = roomService.getAllRooms();
+        model.addAttribute("registeredRooms",rooms);
+        return "roomlist";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String showEditRoom(@PathVariable(name = "id") Long id, Model model) {
+        Room room = roomService.getRoom(id);
+        model.addAttribute(room);
+        return "edit_room";
+    }
+
+    @PostMapping("/edit/{id}")
+    public String editRoom(@PathVariable(name = "id") Long id, @ModelAttribute("room") @Valid Room room, Model model) {
+        roomService.updateRoom(room);
+        List<Room> rooms = roomService.getAllRooms();
+        model.addAttribute("registeredRooms",rooms);
+        return "roomlist";
     }
 }
 
