@@ -4,12 +4,14 @@ import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.model.Reservati
 import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.model.Room;
 import org.springframework.data.domain.Page;
 
+import java.util.List;
+
 public interface ReservationService {
     public Reservation makeReservation(Reservation reservation, String email, Room room);
 
     public Reservation getReservation(Long reservationId);
 
-    public Page<Reservation> getAllReservations();
+    public List<Reservation> getAllReservations();
 
     public Reservation updateReservation(Reservation reservation);
 

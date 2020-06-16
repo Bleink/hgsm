@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<!-- this is replaced with thymeleaf include -->
+<header class="header_area" style="background-color: white;" th:replace="fragments/header :: header"></header>
+
+<div class="container" style="background-color: white; padding: 0;">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">RESERVATION ID</th>
+            <th scope="col">RESERVATION DATE</th>
+            <th scope="col">NUMBER OF NIGHTS</th>
+            <th scope="col">ROOM TYPE</th>
+            <th scope="col">ROOM NUMBER</th>
+            <th scope="col">GUEST NAME</th>
+            <th scope="col">&nbsp;</th>
+            <th scope="col">&nbsp;</th>
+            <th scope="col">&nbsp;</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="reservation: ${registeredReservation}">
+            <td th:text="${reservation.reservationId}"></td>
+            <td th:text="${reservation.reservationDate}"></td>
+            <td th:text="${reservation.numberOfNights}"></td>
+            <td th:text="${reservation.room.roomType.type}"></td>
+            <td th:text="${reservation.room.roomNumber}"></td>
+            <td th:text="${reservation.guest.userName}"></td>
+
+            <td><a th:href="@{/reservation/edit/{id}(id=${reservation.reservationId})}">Edit</a></td>
+            <td><a th:href="@{/reservation/delete/{id}(id=${reservation.reservationId})}">Delete</a></td>
+            <td><a th:href="@{/reservation/edit/{id}(id=${reservation.reservationId})}">Check In</a></td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<!-- this is replaced with thymeleaf include -->
+<footer class="footer_area" th:replace="fragments/footer :: footer"></footer>
+
+
+​​
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+<script src="js/bootstrap.min.js"></script>
+</body>

@@ -14,6 +14,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -42,8 +43,8 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
-    public Page<Reservation> getAllReservations() {
-        return reservationRepository.findAll(PageRequest.of(0, 1, Sort.by(Sort.Direction.ASC, "reservationDate")));
+    public List<Reservation> getAllReservations() {
+        return reservationRepository.findAll();
     }
 
     @Override
