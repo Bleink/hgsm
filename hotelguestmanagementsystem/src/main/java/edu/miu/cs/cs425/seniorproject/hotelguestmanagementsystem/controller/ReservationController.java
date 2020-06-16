@@ -49,7 +49,7 @@ public class ReservationController {
             return new ReservationDto();
         }
 
-        @PutMapping("/reservation")
+        @PostMapping("/reservation")
     public ModelAndView makeReservation(@ModelAttribute("reservation") Reservation reservation, Room room, Principal principal) {
 
             Reservation result=  reservationService.makeReservation(reservation,principal.getName(),room);

@@ -75,7 +75,7 @@ public class RoomController {
 
     }
 
-    @PostMapping("/room")
+    @PostMapping
     public String addRoom(@ModelAttribute("room") @Valid Room room, Model model){
         roomService.createRoom(room);
 
