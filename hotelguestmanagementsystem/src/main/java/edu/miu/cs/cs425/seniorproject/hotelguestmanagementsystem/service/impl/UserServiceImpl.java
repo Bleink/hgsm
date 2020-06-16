@@ -1,8 +1,10 @@
 package edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.service.impl;
 
 import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.dto.UserRegistrationDto;
+import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.model.Guest;
 import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.model.Role;
 import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.model.User;
+import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.repository.GuestRepository;
 import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.repository.RolesRepository;
 import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.repository.UserRepository;
 import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.service.UserService;
@@ -22,15 +24,17 @@ import java.util.*;
 public class UserServiceImpl implements UserService {
 
 
+    private final GuestRepository guestRepository;
     private final UserRepository userRepository;
     private final RolesRepository roleRepository;
     @Autowired
     private  BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, RolesRepository roleRepository){
+    public UserServiceImpl(GuestRepository guestRepository,UserRepository userRepository, RolesRepository roleRepository){
         this.roleRepository=roleRepository;
         this.userRepository=userRepository;
+        this.guestRepository=guestRepository;
     }
 
     @Override
@@ -74,7 +78,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User save(UserRegistrationDto registration) {
-        User user = new User();
+        Guest user = new Guest();
        Role role= roleRepository.findByName("GUEST");
         user.setRoles(new HashSet<Role>(Arrays.asList(role)));
         user.setFirstName(registration.getFirstName());
@@ -83,7 +87,7 @@ public class UserServiceImpl implements UserService {
         user.setUserName(registration.getEmail());
         user.setPassword(passwordEncoder.encode(registration.getPassword()));
 
-        User user1= userRepository.save(user);
+        Guest user1= guestRepository.save(user);
         System.out.println(user1);
         return user1;
     }
