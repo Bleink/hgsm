@@ -26,12 +26,16 @@
 
     <div class="container">
         <div class="hotel_reserve_box card">
-            <h3>Rooms Registration Form</h3>
+            <h3>Edit Rooms</h3>
             <br>
-            <form th:action="@{/room}" th:object="${room}" method="post">
+            <form th:action="@{'/room/edit/' + ${room.roomId}}" th:object="${room}" method="post">
+                <div class="form-group" >
+                    <label for="roomId" class="control-label">Room ID</label>
+                    <input id="roomId" class="form-control" th:field="*{roomId}" readonly="readonly"/>
+                </div >
                 <div class="form-group">
                     <label >Room/Suite Type</label> <select class="form-control"
-                                        th:field="*{roomType}" id="roomType">
+                                                            th:field="*{roomType}" id="roomType">
                     <option value="0" selected>Select Room/Suite</option>
                     <option value="1">Standard</option>
                     <option value="2">Deluxe</option>
@@ -57,7 +61,7 @@
 
                 <br>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-success">Register</button>
+                    <button type="submit" class="btn btn-success">Update</button>
                 </div>
             </form>
         </div>
