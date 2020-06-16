@@ -22,15 +22,17 @@ public class Reservation {
     private Long reservationId;
     @NotBlank(message = "Reservation date is required ")
     @DateTimeFormat(pattern = "mm-dd-yyyy")
-    private LocalDate reservationDate;
+    private LocalDate checkinDate;
+    @NotBlank(message = "Reservation date is required ")
+    @DateTimeFormat(pattern = "mm-dd-yyyy")
+    private LocalDate checkoutDate;
     @Column(nullable=false)
-    private Integer numberOfNights;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "room_id")
-    private Room room;
-    @ManyToOne( optional = false,cascade = CascadeType.ALL)
+    private Long numberOfNights;
+
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "guest_id", nullable = false)
     private Guest guest;
-
+    @OneToMany(mappedBy = "reservation")
+    private List<Room> roomList;
 
 }

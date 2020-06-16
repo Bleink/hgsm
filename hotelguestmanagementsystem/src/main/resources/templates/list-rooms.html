@@ -25,7 +25,7 @@
             <h3>Review Reservation</h3>
             <br>
             <form th:action="@{/reservation}" th:object="${reservationDto}" method="post">
-                <!--					<form th:action="@{/signup}" th:object="${user}" method="post">-->
+
                 <div class="card">
                     <img src="..." class="card-img-top" alt="...">
                     <div class="card-body">
@@ -33,22 +33,19 @@
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item" th:text="'Number of rooms ' + ${reservationDto.getNumberOfRooms()}" th:field="*{numberOfRooms}"></li>
-                        <li class="list-group-item" th:text="'Number of Occupants ' + ${reservationDto.getNumberOfOccupants()}" th:field="*{numberOfOccupants}"></li>
-                        <li class="list-group-item" th:text="'Check in date ' + ${reservationDto.getCheckInDate()}" th:field="*{checkInDate}"></li>
-                        <li class="list-group-item" th:text="'Check out date ' + ${reservationDto.getCheckOutDate()}" th:field="*{checkOutDate}"></li>
-<!--                        <div th:object="${room}" >-->
+                        <li  class="list-group-item" th:text="'Number of rooms'">
+                           </li>
 
-                            <li class="list-group-item"  th:text="'Check out date ' + ${room.getRoomId()}" th:value="*{room[0]}"></li>
-<!--                            <li class="list-group-item"  th:text="'Check out date '" th:field="*{roomId}"></li>-->
-<!--                            <li class="list-group-item"  th:text="'Check out date '" th:field="*{roomNumber}"></li>-->
-<!--                            <li class="list-group-item"  th:text="'Check out date '" th:field="*{roomStatus}"></li>&ndash;&gt;-->
-
-
-
-<!--                        </div>-->
 
                     </ul>
+                    <input th:value="${reservationDto.getNumberOfNights()}" class="list-group-item" th:text="'Number of Occupants ' + ${reservationDto.getNumberOfOccupants()}" th:field="*{numberOfOccupants}"/>
+                    <input th:value="${reservationDto.getRoomType()}" class="list-group-item" th:text="'room type ' + ${reservationDto.getRoomType()}" th:field="*{roomType}"/>
+                    <input class="list-group-item"  th:value="${reservationDto.getCheckInDate()}" th:text="'Check in date ' + ${reservationDto.getCheckInDate()}" th:field="*{checkInDate}"/>
+                    <input class="list-group-item" th:value="${reservationDto.getCheckOutDate()}" th:text="'Check out date ' + ${reservationDto.getCheckOutDate()}" th:field="*{checkOutDate}"/>
+                    <label for="numberOfRooms" class="control-label">Number of rooms</label>
+                    <input
+                            id="numberOfRooms"  th:value="${reservationDto.getNumberOfRooms()}"  class="form-control" th:field="*{numberOfRooms}" />
+
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </form>

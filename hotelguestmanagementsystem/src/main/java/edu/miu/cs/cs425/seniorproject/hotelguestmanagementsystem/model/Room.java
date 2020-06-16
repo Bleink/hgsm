@@ -26,4 +26,7 @@ public class Room {
     @ManyToOne( optional = false)
     @JoinColumn(name = "roomtype_id", nullable = false)
     private RoomType roomType;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "reservation_id")
+    private Reservation reservation;
 }
