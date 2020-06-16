@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+
+     >
+<head th:replace="fragments/head :: head">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Access Denied</title>
+</head>
+<body>
+<header class="header_area" style="background-color: white;"
+        th:replace="fragments/header :: header"></header>
+<div class="container" style="background-color: white; padding: 0;">
+<div class="jumbotron">
+    <h1 class="display-4">oopssss, Access Denied!</h1>
+    <p class="lead">Sorry, but your are not allowed to access this.use the correct credential to access this page</p>
+    <hr class="my-4">
+    <p>Hotel Reservation system, we make your life easier than it seems.</p>
+    <p class="lead">
+        <a class="btn btn-primary btn-lg"  th:href="@{/home}" role="button">Back to home page</a>
+    </p>
+</div>
+
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<footer class="footer_area" th:replace="fragments/footer :: footer"></footer>
+
+​​
+<script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+<script src="js/bootstrap.min.js"></script>
+</body>
+</html>

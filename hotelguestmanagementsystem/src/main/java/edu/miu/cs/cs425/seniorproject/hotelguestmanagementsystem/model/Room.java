@@ -23,7 +23,7 @@ public class Room {
     private Integer roomNumber;
     @Enumerated
     private Status roomStatus;
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne( optional = false)
     @JoinColumn(name = "roomtype_id", nullable = false)
     private RoomType roomType;
 }

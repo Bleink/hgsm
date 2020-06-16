@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head :: head">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+<!-- this is replaced with thymeleaf include -->
+<header class="header_area" style="background-color: white;"
+        th:replace="fragments/header :: header"> </header>
+
+<div class="container" style="background-color: white; padding: 0;">
+
+    <section>
+        <div class="container">
+            <div class="back_nav">
+                <div class="col-sm-5">
+                    <h2>Room Types</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="hotel_reserve_box card">
+            <h3>Rooms Registration Form</h3>
+            <br>
+            <form th:action="@{/roomType}" th:object="${roomType}" method="post">
+                <div class="form-group" th:classappend="${#fields.hasErrors('type')}? 'has-error':''">
+                    <label for="type" class="control-label">Room/Suite Type</label>
+                   <input id="type" class="form-control" th:field="*{type}" />
+                </div >
+                <div class="form-group" th:classappend="${#fields.hasErrors('price')}? 'has-error':''">
+                    <label for="price" class="control-label">Price/suite</label>
+                    <input id="price" class="form-control" th:field="*{price}" />
+                </div>
+                <div class="form-group" th:classappend="${#fields.hasErrors('description')}? 'has-error':''">
+                    <label for="description" class="control-label">Description</label>
+                    <input id="description" class="form-control" th:field="*{description}" />
+                </div>
+                <div class="form-group" th:classappend="${#fields.hasErrors('imagePath')}? 'has-error':''">
+                    <label for="imagePath" class="control-label">Image Path</label>
+                    <input id="imagePath" class="form-control" th:field="*{imagePath}" />
+                </div>
+
+                <br>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<br>
+
+<!-- this is replaced with thymeleaf include -->
+<footer class="footer_area" th:replace="fragments/footer :: footer"></footer>
+
+​​
+<script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="js/bootstrap.min.js"></script>
+​
+<script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
+<script type="text/javascript" src="../static/js/script.js"></script>
+
+</body>
+</html>

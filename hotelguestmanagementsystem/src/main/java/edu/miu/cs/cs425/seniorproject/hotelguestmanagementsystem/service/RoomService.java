@@ -1,6 +1,7 @@
 package edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.service;
 
 import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.model.Room;
+import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.model.RoomType;
 
 import java.util.List;
 
@@ -15,6 +16,6 @@ public interface RoomService {
 
     public void deleteRoom(Long room);
 
-    public List<Room> searchRoom(String roomType);
+    public List<Room> searchRoom(RoomType roomType);
 
 }

@@ -10,5 +10,5 @@ import java.util.List;
 
 @Repository
 public interface RoomRepository extends JpaRepository<Room,Long> {
-    List<Room> findAllByRoomTypeTypeAndRoomStatus(String roomType, Status status);
+    List<Room> findAllByRoomTypeAndRoomStatus(RoomType roomType, Status status);
 }

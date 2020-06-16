@@ -31,4 +31,9 @@ public class HomeController {
         return fileList;
     }
 
+    @GetMapping("/access-denied")
+    public String accessDenied() {
+        return "/error/access-denied";
+    }
+
 }

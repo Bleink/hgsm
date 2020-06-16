@@ -1,10 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>List Rooms</title>
 </head>
+<!-- this is replaced with thymeleaf include -->
+<header class="header_area" style="background-color: white;" th:replace="fragments/header :: header"></header>
 <body>
+<div class="container" style="background-color: white; padding: 0;">
 
+    <section>
+        <div class="container">
+            <div class="back_nav">
+                <div class="col-sm-5">
+                    <h2>Reserve Room</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="hotel_reserve_box card">
+            <h3>Review Reservation</h3>
+            <br>
+            <form th:action="@{/reservation}" th:object="${reservationDto}" method="post">
+                <!--					<form th:action="@{/signup}" th:object="${user}" method="post">-->
+                <div class="card">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="'Room Type ' + ${reservationDto.getRoomType()}"></h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item" th:text="'Number of rooms ' + ${reservationDto.getNumberOfRooms()}" th:field="*{numberOfRooms}"></li>
+                        <li class="list-group-item" th:text="'Number of Occupants ' + ${reservationDto.getNumberOfOccupants()}" th:field="*{numberOfOccupants}"></li>
+                        <li class="list-group-item" th:text="'Check in date ' + ${reservationDto.getCheckInDate()}" th:field="*{checkInDate}"></li>
+                        <li class="list-group-item" th:text="'Check out date ' + ${reservationDto.getCheckOutDate()}" th:field="*{checkOutDate}"></li>
+<!--                        <div th:object="${room}" >-->
+
+                            <li class="list-group-item"  th:text="'Check out date ' + ${room.getRoomId()}" th:value="*{room[0]}"></li>
+<!--                            <li class="list-group-item"  th:text="'Check out date '" th:field="*{roomId}"></li>-->
+<!--                            <li class="list-group-item"  th:text="'Check out date '" th:field="*{roomNumber}"></li>-->
+<!--                            <li class="list-group-item"  th:text="'Check out date '" th:field="*{roomStatus}"></li>&ndash;&gt;-->
+
+
+
+<!--                        </div>-->
+
+                    </ul>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<footer class="footer_area" th:replace="fragments/footer :: footer"></footer>
+
+
+​​
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+<script src="js/bootstrap.min.js"></script>
 </body>
-</html>

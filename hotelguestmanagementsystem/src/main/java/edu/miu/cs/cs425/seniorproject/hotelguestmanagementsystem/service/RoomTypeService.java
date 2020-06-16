@@ -16,4 +16,6 @@ public interface RoomTypeService {
     public RoomType updateRoomType(RoomType roomType);
 
     public void deleteRoomType(Long roomTypeId);
+
+    public RoomType findByType(String type);
 }

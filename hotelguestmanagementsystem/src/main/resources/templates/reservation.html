@@ -4,6 +4,12 @@
 <head th:replace="fragments/head :: head">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+	<script>
+		$(function () {
+			$("#datepicker").datepicker({dateFormat: 'yy-mm-dd'}).val();
+			$('#datetimepicker').data("DateTimePicker").FUNCTION();
+		});
+	</script>
 </head>
 
 <body>
@@ -28,23 +34,17 @@
 			<div class="hotel_reserve_box card">
 				<h3>Hotel Reservation Form</h3>
 				<br>
-				<form th:action="@{/addStudent}" th:object="${student}">
+				<form th:action="@{/checkRooms}" th:object="${reservationDto}" method="post">
+<!--					<form th:action="@{/signup}" th:object="${user}" method="post">-->
 					<div class="form-group">
-						<label>Room/Suite Type</label> <select class="form-control"
-							id="room_type" onchange="finalCost()" th:field="*{type}">
-							<option value="0" selected>Select Room/Suite</option>
-							<option value="1">Standard</option>
-							<option value="2">Deluxe</option>
-							<option value="3">Superior Deluxe</option>
-							<option value="4">Premier Deluxe</option>
-							<option value="5">Executive Suite</option>
-							<option value="6">Junior Suite</option>
-							<option value="7">Honeymoon Suite</option>
+						<label>Room/Suite Type</label>
+						<select class="form-control" id="room_type" onchange="finalCost()" th:field="*{roomType}">
+							<option th:each="roomType, ite : ${roomTypes}" th:text="${roomType.getType()}" th:value="${roomType.getType()}"></option>
 						</select>
 					</div>
-					<div class="form-group">
+					<div class="form-group" >
 						<label>Number of room/suite</label> <select class="form-control"
-							id="room_number" onchange="finalCost()">
+							id="room_number" onchange="finalCost()" th:field="*{numberOfRooms}">
 							<option value="0">0</option>
 							<option value="1">1</option>
 							<option value="2">2</option>
@@ -90,11 +90,16 @@
 							<option value="0">No</option>
 						</select>
 					</div>
-					<br>
 					<div class="form-group">
-						<label>Total Cost (RM) : </label> <a href=""><span id="result"
-							style="background-color: #7527b0; color: #fff; padding: 6px 70px; font-weight: 600; font-size: 18px; margin-left: 10px; border-radius: 5px;">0</span></a>
+						<label for="datepicker">Check In Date</label>
+						<input type="date" id="datepicker" th:field="*{checkInDate}" class="form-control" required>
 					</div>
+					<div class="form-group">
+						<label for="datepicker">Check Out Date</label>
+						<input type="date" th:field="*{checkOutDate}" class="form-control" required>
+					</div>
+					<br>
+					<button type="submit" class="btn btn-primary">Submit</button>
 				</form>
 			</div>
 		</div>
@@ -130,6 +135,23 @@
 
 			document.getElementById("result").innerHTML = total;
 		}
+		(function () {
+			'use strict';
+			window.addEventListener('load', function () {
+				// Fetch all the forms we want to apply custom Bootstrap validation styles to
+				var forms = document.getElementsByClassName('needs-validation');
+				// Loop over them and prevent submission
+				var validation = Array.prototype.filter.call(forms, function (form) {
+					form.addEventListener('submit', function (event) {
+						if (form.checkValidity() === false) {
+							event.preventDefault();
+							event.stopPropagation();
+						}
+						form.classList.add('was-validated');
+					}, false);
+				});
+			}, false);
+		})();
 	</script>
 </body>
 </html>

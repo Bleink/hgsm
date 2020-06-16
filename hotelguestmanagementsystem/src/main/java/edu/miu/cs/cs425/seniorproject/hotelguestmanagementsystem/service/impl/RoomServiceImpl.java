@@ -1,6 +1,7 @@
 package edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.service.impl;
 
 import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.model.Room;
+import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.model.RoomType;
 import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.model.Status;
 import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.repository.RoomRepository;
 import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.service.RoomService;
@@ -49,8 +50,9 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public List<Room> searchRoom(@RequestParam String roomType){
+    public List<Room> searchRoom( RoomType roomType){
 
-        return roomRepository.findAllByRoomTypeTypeAndRoomStatus(roomType, Status.AVAILABLE);
+
+        return roomRepository.findAllByRoomTypeAndRoomStatus(roomType, Status.AVAILABLE);
     }
 }

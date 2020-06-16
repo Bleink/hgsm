@@ -29,6 +29,11 @@ public class RoomTypeServiceImpl implements RoomTypeService {
     }
 
     @Override
+    public RoomType findByType(String type){
+        return roomTypeRepository.findByType(type);
+    }
+
+    @Override
     public List<RoomType> getAllRoomTypes() {
         return roomTypeRepository.findAll();
     }
