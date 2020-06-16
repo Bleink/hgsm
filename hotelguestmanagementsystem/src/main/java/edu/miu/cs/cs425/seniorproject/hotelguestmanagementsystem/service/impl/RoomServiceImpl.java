@@ -1,10 +1,13 @@
 package edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.service.impl;
 
 import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.model.Room;
+import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.model.RoomType;
+import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.model.Status;
 import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.repository.RoomRepository;
 import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Optional;
@@ -43,5 +46,12 @@ public class RoomServiceImpl implements RoomService {
     public void deleteRoom(Long roomId) {
         roomRepository.deleteById(roomId);
 
+    }
+
+    @Override
+    public List<Room> searchRoom( RoomType roomType){
+
+
+        return roomRepository.findAllByRoomTypeAndRoomStatus(roomType, Status.AVAILABLE);
     }
 }

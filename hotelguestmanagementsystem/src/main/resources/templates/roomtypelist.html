@@ -12,23 +12,25 @@
     <table class="table table-striped">
         <thead>
         <tr>
-            <th scope="col">ROOM ID</th>
-            <th scope="col">ROOM NUMBER</th>
-            <th scope="col">ROOM STATUS</th>
+            <th scope="col">ROOM TYPE ID</th>
             <th scope="col">ROOM TYPE</th>
+            <th scope="col">PRICE</th>
+            <th scope="col">DESCRIPTION</th>
+            <th scope="col">IMAGE PATH</th>
             <th scope="col">&nbsp;</th>
             <th scope="col">&nbsp;</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="room: ${registeredRooms}">
-            <td th:text="${room.roomId}"></td>
-            <td th:text="${room.roomNumber}"></td>
-            <td th:text="${room.roomStatus}"></td>
-            <td th:text="${room.roomType.type}"></td>
+        <tr th:each="roomTypes: ${registeredRoomTypes}">
+            <td th:text="${roomTypes.roomTypeId}"></td>
+            <td th:text="${roomTypes.type}"></td>
+            <td th:text="${roomTypes.price}"></td>
+            <td th:text="${roomTypes.description}"></td>
+            <td th:text="${roomTypes.imagePath}"></td>
 
-            <td><a th:href="@{/room/edit/{id}(id=${room.roomId})}">Edit</a></td>
-            <td><a th:href="@{/room/delete/{id}(id=${room.roomId})}">Delete</a></td>
+            <td><a th:href="@{/roomType/edit/{id}(id=${roomTypes.roomTypeId})}">Edit</a></td>
+            <td><a th:href="@{/roomType/delete/{id}(id=${roomTypes.roomTypeId})}">Delete</a></td>
         </tr>
         </tbody>
     </table>
