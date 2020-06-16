@@ -25,6 +25,9 @@ public class Bill {
     @NotBlank(message="checkout date is required")
     private LocalDate checkoutDate;
     private  Double finalRate;
+    @ManyToOne( optional = false)
+    @JoinColumn(name = "guest_id", nullable = false)
+    private Guest guest;
 
     public void calculateBill(LocalDate checkinDate, Double rate){
         Period intervalPeriod = Period.between(checkinDate, checkoutDate);

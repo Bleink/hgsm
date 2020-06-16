@@ -36,23 +36,11 @@ public class RegistrationController {
     @PostMapping
     public String registerUserAccount(@ModelAttribute("user") @Valid UserRegistrationDto userDto,
                                       BindingResult result){
-        System.out.println("................success....................");
-        System.out.println(userDto.getEmail());
-      //  User existing = userService.findByEmail(userDto.getEmail());
-      /*
-        System.out.println(existing);
-        if (existing != null){
-            System.out.println("................success1....................");
-            result.rejectValue("email", null, "There is already an account registered with that email");
-        }
 
-        if (result.hasErrors()){
-            System.out.println("................success2....................");
-            return "User/signup";
-        }*/
+
 
         userService.save(userDto);
-        System.out.println("................success3....................");
-        return "redirect:/signup";
+
+        return "redirect:/login";
     }
 }

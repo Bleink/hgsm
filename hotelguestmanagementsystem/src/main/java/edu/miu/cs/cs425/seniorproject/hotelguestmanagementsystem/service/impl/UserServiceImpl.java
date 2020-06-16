@@ -1,6 +1,7 @@
 package edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.service.impl;
 
 import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.dto.UserRegistrationDto;
+import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.model.Guest;
 import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.model.Role;
 import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.model.User;
 import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.repository.RolesRepository;
@@ -74,14 +75,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User save(UserRegistrationDto registration) {
-        User user = new User();
+        User user = new Guest();
         user.setFirstName(registration.getFirstName());
         user.setLastName(registration.getLastName());
         user.setEmail(registration.getEmail());
         user.setUserName(registration.getEmail());
         user.setPassword(passwordEncoder.encode(registration.getPassword()));
-      Role role=roleRepository.findByName("GUEST");
-        user.setRoles(new HashSet<Role>(Arrays.asList(role)));
+
         User user1= userRepository.save(user);
         System.out.println(user1);
         return user1;

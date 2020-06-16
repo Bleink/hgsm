@@ -8,6 +8,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.HashSet;
 import java.util.Set;
 
 
@@ -52,6 +53,11 @@ public class User {
     )
     private Set<Role> roles;
     private boolean enabled;
+
+    public User(HashSet<Role> roles) {
+        this.roles=roles;
+    }
+
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
@@ -68,6 +74,8 @@ public class User {
                 ", roles=" + roles +
                 '}';
     }
+
+
 }
 
 

@@ -27,6 +27,9 @@ public class RoomType {
     private String description;
     @Column(nullable = true)
     private String imagePath;
+    public RoomType(String name){
+        this.type=type;
+    }
 //    private Integer numberOfRoomsAvailable;
 //    @OneToMany(cascade = CascadeType.PERSIST)
 //    @JoinColumn(name = "roomtype_id")
