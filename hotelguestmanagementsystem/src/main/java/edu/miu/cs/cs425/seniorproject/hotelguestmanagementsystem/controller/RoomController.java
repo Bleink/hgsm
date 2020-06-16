@@ -9,13 +9,10 @@ import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.service.RoomTyp
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-<<<<<<< HEAD
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-=======
 import org.springframework.web.bind.annotation.*;
->>>>>>> 03fac192cbef347373aaf84df5f27bd39f890d5c
 
 import javax.servlet.ServletContext;
 import javax.validation.Valid;
@@ -34,34 +31,17 @@ public class RoomController {
     @Autowired
     ServletContext servletContext;
 
-//    @Autowired
-//    RoomTypeService roomTypeService;
-
-//    @ModelAttribute("room")
-//    public Room room() {
-//        return new Room();
-//    }
-
 //    @ModelAttribute("reservationDto")
 //    public ReservationDto reservationDto() {
 //        return new ReservationDto();
 //    }
 
-    @GetMapping("/room")
+    @GetMapping
     public String getRooms(Model model) {
         Room room = new Room();
         model.addAttribute(room);
-//        model.addAttribute(Status.AVAILABLE);
         return "room";
     }
-
-//    public String getRooms(Model model) {
-//        List<RoomType> roomTypes = roomTypeService.getAllRoomTypes();
-//        model.addAttribute("typesOfRooms",roomTypes);
-//        return "accommodation";
-//    }
-
-
 
     @PostMapping("/checkRooms")
     public String searchRooms(@ModelAttribute("reservationDto") ReservationDto reservationDto, Model model){
@@ -87,8 +67,6 @@ public class RoomController {
     }
 
     @PostMapping("/room")
-    public String addRoom(@ModelAttribute("room") @Valid Room room){
-    @PostMapping
     public String addRoom(@ModelAttribute("room") @Valid Room room, Model model){
         roomService.createRoom(room);
 
