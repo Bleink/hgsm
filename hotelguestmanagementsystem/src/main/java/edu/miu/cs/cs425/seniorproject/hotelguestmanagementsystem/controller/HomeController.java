@@ -3,13 +3,16 @@ package edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
 import java.io.File;
 
 @Controller
 public class HomeController {
 
+
     @GetMapping(value = {"/home"})
     public String displayHome(Model model) {
+
         String[] curouselList = curouselPictureList();
         String[] bottomList = indexBottomPictureList();
 

@@ -3,7 +3,6 @@ package edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.service.impl;
 import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.model.Room;
 import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.repository.RoomRepository;
 import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.service.RoomService;
-import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.service.RoomTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

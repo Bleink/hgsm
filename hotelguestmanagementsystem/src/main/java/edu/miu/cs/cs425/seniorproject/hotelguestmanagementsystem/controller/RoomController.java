@@ -9,9 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.ServletContext;
 import javax.validation.Valid;
+import java.security.Principal;
 
 @Controller
 //@RequestMapping("/admin")
@@ -19,6 +20,8 @@ public class RoomController {
 
     @Autowired
     RoomService roomService;
+    @Autowired
+    ServletContext servletContext;
 
     @ModelAttribute("room")
     public Room room() {
@@ -26,7 +29,7 @@ public class RoomController {
     }
 
     @GetMapping("/room")
-    public String getRooms(Model model) {
+    public String getRooms(Model model, Principal principal) {
 
         RoomType[] roomArr = { new RoomType(1l, "Standard", 100.00, "this is kings description", "img/banner.jpg"),
                 new RoomType(1l, "Deluxe", 200.00, "this is kings description", "img/banner.jpg"),
@@ -34,7 +37,7 @@ public class RoomController {
                 new RoomType(1l, "Premier Deluxe", 400.00, "this is kings description", "img/banner.jpg"),
                 new RoomType(1l, "Executive Suite", 500.00, "this is kings description", "img/banner.jpg"),
                 new RoomType(1l, "Junior Suite", 600.00, "this is kings description", "img/banner.jpg") };
-
+        System.out.println(principal.getName()+ "...."+servletContext.getAttribute("test"));
         model.addAttribute("typesOfRooms",roomArr);
         return "accommodation";
     }
