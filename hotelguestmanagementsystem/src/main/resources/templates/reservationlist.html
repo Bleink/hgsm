@@ -13,11 +13,13 @@
         <thead>
         <tr>
             <th scope="col">RESERVATION ID</th>
-            <th scope="col">RESERVATION DATE</th>
+            <th scope="col">CHECK IN DATE</th>
+            <th scope="col">CHECK OUT DATE</th>
             <th scope="col">NUMBER OF NIGHTS</th>
             <th scope="col">ROOM TYPE</th>
-            <th scope="col">ROOM NUMBER</th>
-            <th scope="col">GUEST NAME</th>
+            <th scope="col">NUMBER OF ROOMS</th>
+            <th scope="col">GUEST FIRST NAME</th>
+            <th scope="col">GUEST LAST NAME</th>
             <th scope="col">&nbsp;</th>
             <th scope="col">&nbsp;</th>
             <th scope="col">&nbsp;</th>
@@ -26,15 +28,17 @@
         <tbody>
         <tr th:each="reservation: ${registeredReservation}">
             <td th:text="${reservation.reservationId}"></td>
-            <td th:text="${reservation.reservationDate}"></td>
+            <td th:text="${reservation.checkinDate}"></td>
+            <td th:text="${reservation.checkoutDate}"></td>
             <td th:text="${reservation.numberOfNights}"></td>
-            <td th:text="${reservation.room.roomType.type}"></td>
-            <td th:text="${reservation.room.roomNumber}"></td>
-            <td th:text="${reservation.guest.userName}"></td>
-
+        <!--    <td th:text="${reservation.roomList[0].roomType.type}"></td>
+            <td th:text="${reservation.roomList.size()}"></td>
+        -->
+            <td th:text="${reservation.guest.firstName}"></td>
+            <td th:text="${reservation.guest.lastName}"></td>
             <td><a th:href="@{/reservation/edit/{id}(id=${reservation.reservationId})}">Edit</a></td>
             <td><a th:href="@{/reservation/delete/{id}(id=${reservation.reservationId})}">Delete</a></td>
-            <td><a th:href="@{/reservation/edit/{id}(id=${reservation.reservationId})}">Check In</a></td>
+<!--            <td><a th:href="@{/reception/ckeckin/{roomList}(roomList=${reservation.roomList})}">Check In</a></td>-->
         </tr>
         </tbody>
     </table>

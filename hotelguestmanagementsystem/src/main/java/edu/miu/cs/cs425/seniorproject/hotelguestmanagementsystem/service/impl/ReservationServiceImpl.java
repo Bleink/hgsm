@@ -4,6 +4,7 @@ import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.dto.Reservation
 import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.model.Guest;
 import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.model.Reservation;
 import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.model.Room;
+import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.model.Status;
 import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.repository.ReservationRepository;
 import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.repository.RoomRepository;
 import edu.miu.cs.cs425.seniorproject.hotelguestmanagementsystem.service.GuestService;
@@ -48,8 +49,6 @@ public class ReservationServiceImpl implements ReservationService {
                         }
                    );
 
-
-
       //  room.setRoomStatus(Status.RESERVED);
        // res.setRoom(room);
       //  Reservation result= reservationRepository.save(res);
@@ -64,7 +63,11 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Override
     public List<Reservation> getAllReservations() {
-        return reservationRepository.findAll();
+        System.out.println("..........inside service.......");
+
+        List<Reservation> res= reservationRepository.findAll();
+        System.out.println("..........inside service......."+res);
+        return  res;
     }
 
     @Override
@@ -72,7 +75,7 @@ public class ReservationServiceImpl implements ReservationService {
         Reservation oldReservation = getReservation(reservation.getReservationId());
         oldReservation.setNumberOfNights(reservation.getNumberOfNights());
         oldReservation.setCheckinDate(reservation.getCheckinDate());
-        oldReservation.setRoomList(reservation.getRoomList());
+    //    oldReservation.setRoomList(reservation.getRoomList());
         return reservationRepository.save(oldReservation);
     }
 

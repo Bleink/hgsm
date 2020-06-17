@@ -32,7 +32,7 @@ public class Reservation {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "guest_id", nullable = false)
     private Guest guest;
-    @OneToMany(mappedBy = "reservation")
-    private List<Room> roomList;
+//    @OneToMany(mappedBy = "reservation")
+//    private List<Room> roomList;
 
 }
