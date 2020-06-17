@@ -40,7 +40,7 @@ public class RoomController {
         return "room";
     }
 
-    @PostMapping("/room/checkRooms")
+    @PostMapping("/checkRooms")
     public String searchRooms(@ModelAttribute("reservationDto") ReservationDto reservationDto, Model model){
 
         RoomType roomType = roomTypeService.findByType(reservationDto.getRoomType());

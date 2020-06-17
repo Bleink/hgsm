@@ -18,7 +18,7 @@
             <br>
             <form th:action="@{/reservation}" th:object="${reservationDto}" method="post">
 
-                <div class="card">
+<!--                <div class="card">-->
 <!--                    <img src="..." class="card-img-top" alt="...">-->
 <!--                    <div class="card-body">-->
 <!--                        <h5 class="card-title" th:text="'Room Type ' + ${reservationDto.getRoomType()}"></h5>-->
@@ -30,21 +30,28 @@
 
 <!--                    </ul>-->
 
-                    <label>Room Type</label>
-                    <input th:value="${reservationDto.getRoomType()}" class="list-group-item" th:field="*{roomType}"/>
-                    <label>Check In Date</label>
-                    <input class="list-group-item"  th:value="${reservationDto.getCheckInDate()}" th:field="*{checkInDate}"/>
-                    <label>Check Out Date</label>
-                    <input class="list-group-item" th:value="${reservationDto.getCheckOutDate()}" th:field="*{checkOutDate}"/>
+                    <label for="roomType" class="control-label">Room Type</label>
+<!--                    <p>Room Type</p>-->
+                <p>.</p>
+                    <input id="roomType" class="list-group-item" th:value="${reservationDto.getRoomType()}"  th:field="*{roomType}"/>
+                    <br>
+                    <p>.</p>
+                    <label for="checkin" class="control-label">Check In Date</label>
+<!--                    <p>Check In Date</p>-->
+                    <input id="checkin" class="list-group-item"  th:value="${reservationDto.getCheckInDate()}" th:field="*{checkInDate}"/>
+                    <label for="checkout" class="control-label">Check Out Date</label>
+<!--                    <p>Check Out Date</p>-->
+                    <input id="checkout" class="list-group-item" th:value="${reservationDto.getCheckOutDate()}" th:field="*{checkOutDate}"/>
 <!--                    <label>Number of Nights</label>-->
 <!--                    <input hidden th:value="${reservationDto.getNumberOfNights()}" class="list-group-item" th:field="*{numberOfNights}"/>-->
                     <label for="numberOfRooms" class="control-label">Number of rooms</label>
+<!--                    <p>Number of Rooms</p>-->
                     <input
                             id="numberOfRooms"  th:value="${reservationDto.getNumberOfRooms()}"  class="list-group-item" th:field="*{numberOfRooms}" />
                     <br>
 
                     <button type="submit" class="btn btn-primary">Reserve</button>
-                </div>
+<!--                </div>-->
             </form>
         </div>
     </div>
