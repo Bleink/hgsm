@@ -49,7 +49,7 @@ public class ReservationController {
 
             ModelAndView modelAndView=new ModelAndView();
             modelAndView.addObject("reservation",result);
-            modelAndView.setViewName("redirect:/reservation");
+            modelAndView.setViewName("confirmation");
 
      return modelAndView;
     }
